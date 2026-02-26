@@ -9,7 +9,7 @@ st.caption("Ditenagai oleh DeepSeek melalui OpenRouter")
 # 2. Setup API (Ganti 'ISI_API_KEY_LO' dengan key dari OpenRouter)
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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", 
+    api_key=st.secrets["OPENROUTER_API_KEY"], 
 )
 
 # 3. Inisialisasi Memori Chat (Biar gak lupa konteks)
@@ -42,4 +42,5 @@ if prompt := st.chat_input("Tanya apa saja, brok..."):
             st.markdown(full_response)
     
     # Simpan respon AI ke memori
+
     st.session_state.messages.append({"role": "assistant", "content": full_response})
